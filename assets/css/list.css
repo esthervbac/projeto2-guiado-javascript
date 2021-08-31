@@ -13,3 +13,7 @@
 .lista tr td {
     padding: 5px;
 }
+
+.lista td {
+    border: 1px solid black;
+}
