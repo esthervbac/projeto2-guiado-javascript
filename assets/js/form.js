@@ -15,7 +15,7 @@ function testaFormulario(e) {
     }
 
     if (e.target.elements['phone'].value.replace(/[-+() ]/g, '').length < 13 || e.target.elements['phone'].value.replace(/[-+() ]/g, '').length > 13) {
-        alert('Número inválido!')
+        alert('Número inválido! Você deve preencher apenas com números o DDD e seu número de celular!')
         return false
     }
 
