@@ -1,55 +1,10 @@
-var people = [
-    {   
-        name: 'Maria Antonieta Alves',
-        tel:  '+55 (21) 99999-9999',
-        xp:   true
-    },
-    {   
-        name: 'Carlos Eduardo Vieira',
-        tel:  '+55 (21) 99999-9999',
-        xp:   true
-    },
-    {   
-        name: 'Priscila Veiga',
-        tel:  '+55 (21) 99999-9999',
-        xp:   false
-    },
-    {   
-        name: 'José Roberto Barcelos',
-        tel:  '+55 (21) 99999-9999',   
-        xp:   false
-    },
-    {   
-        name: 'Raíssa Martins',
-        tel:  '+55 (21) 99999-9999',
-        xp:   false
-    },
-    {   
-        name: 'Isadora Mota',
-        tel:  '+55 (21) 99999-9999',
-        xp:   true
-    },
-    {   
-        name: 'Angélica Barbosa',
-        tel:  '+55 (21) 99999-9999',
-        xp:   false
-    },
-    {   
-        name: 'Luiz Pedro Sampaio',
-        tel:  '+55 (21) 99999-9999',
-        xp:   true
-    },
-    {   
-        name: 'Henrique Ribeiro Santos',
-        tel:  '+55 (21) 99999-9999',
-        xp:   true
-    },
-    {   
-        name: 'Silvio Duarte Alcântara',
-        tel:  '+55 (21) 99999-9999',
-        xp:   true
-    },
-];
+var peopleRaw = localStorage.getItem('people')
+if (peopleRaw != null) {
+    var people = JSON.parse(peopleRaw)
+} else {
+    var people = [];
+}
+
 
 function desenhaTabela() {
 
@@ -70,10 +25,17 @@ function desenhaTabela() {
                     ${ (people[person].xp ? '<strong style="color:green"> Sim </strong>' : '<strong style="color:red"> Não </strong>') }
                 </td>
                 <td>
-                    <button onclick="people.splice(${person}, 1); desenhaTabela()"> Excluir </button>
+                    <button onclick="deleteUser(${person})"> Excluir </button>
+                    <a href="./src/form.html?person=${person}">Editar</a>
                 </td>
             </tr>`
     }
 }  
+
+function deleteUser(p) {
+    people.splice(p, 1); 
+    desenhaTabela(); 
+    localStorage.setItem('people', JSON.stringify(people))
+}
 
 desenhaTabela();
