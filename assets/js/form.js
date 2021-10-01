@@ -19,6 +19,11 @@ function testaFormulario(e) {
         return false
     }
 
+    var escolhaXp = document.querySelector("input[type='radio']:checked");
+    if (!escolhaXp) { 
+        return alert("Você deve marcar uma das opções de experiência prévia!");
+    }
+
     var peopleRaw = localStorage.getItem('people')
     if (peopleRaw != null) {
         var people = JSON.parse(peopleRaw)
